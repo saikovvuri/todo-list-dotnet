@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0.100 AS builder
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS builder
 
 WORKDIR /src
 COPY src/ToDoList.csproj .
@@ -10,7 +10,7 @@ COPY src/ .
 RUN dotnet publish -c Release -o /out -r ${RID} ToDoList.csproj
 
 # app image
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.0
+FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1
 
 EXPOSE 80
 WORKDIR /data
